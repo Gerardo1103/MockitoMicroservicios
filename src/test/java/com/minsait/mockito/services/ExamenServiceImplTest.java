@@ -33,9 +33,9 @@ class ExamenServiceImplTest {
     void testArgumentCaptor(){
         when(examenRepository.findAll()).thenReturn(Datos.EXAMENES);
         when(preguntaRepository.findPreguntasByExamenId(anyLong())).thenReturn(Datos.PREGUNTAS);
-        service.findExamenPorNombreConPreguntas("Historia");
+        service.findExamenPorNombreConPreguntas("Español");
         verify(preguntaRepository).findPreguntasByExamenId(captor.capture());
-        assertEquals(1L,captor.getValue());
+        assertEquals(2L,captor.getValue());
     }
 
     @Test
@@ -64,9 +64,9 @@ class ExamenServiceImplTest {
         verify(preguntaRepository).findPreguntasByExamenId(anyLong());
     }
     @Test
-    void testExamenNombrePreguntasNuLO(){
-
-        Examen examen= service.findExamenPorNombreConPreguntas("Algebra");
+    void testExamenNombrePreguntasNuLl(){
+        when(examenRepository.findAll()).thenReturn(Datos.EXAMENES);
+        Examen examen = service.findExamenPorNombreConPreguntas("Algebra");
         assertNull(examen);
     }
     @Test

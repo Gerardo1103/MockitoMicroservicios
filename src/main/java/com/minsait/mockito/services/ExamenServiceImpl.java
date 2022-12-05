@@ -16,7 +16,7 @@ public class ExamenServiceImpl implements ExamenService{
         //examenRepository.findAll(); //para marcar error en la prueba unitaria
         return examenRepository.findAll().stream()
                //.filter(name -> name.equals(nombre))
-               // .filter(examen -> examen.getNombre().equals(nombre))
+                .filter(examen -> examen.getNombre().equals(nombre))
                 .findFirst();
 
     }
@@ -37,7 +37,7 @@ public class ExamenServiceImpl implements ExamenService{
         //Validar si tiene preguntas. si tiene preguntas, guardar el examen con ellas
         //si no tiene solo guardar el examen
         if(!examen.getPreguntas().isEmpty()){
-                preguntaRepository.SavePreguntas(examen.getPreguntas());
+            preguntaRepository.SavePreguntas(examen.getPreguntas());
         }
         return examenRepository.save(examen);
     }
