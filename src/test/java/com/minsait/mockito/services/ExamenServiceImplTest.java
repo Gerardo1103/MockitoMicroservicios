@@ -71,12 +71,11 @@ class ExamenServiceImplTest {
     }
     @Test
     void testSaveExamenReturn(){
-        Examen examen = Datos.EXAMEN;
-       when(service.saveExamen(examen)).thenReturn(Datos.EXAMEN);
-       Examen examen2 = service.saveExamen(examen);
-        assertEquals("Quimica",examen2.getNombre());
-        assertTrue(examen2.getPreguntas().isEmpty());
-        verify(examenRepository).save(examen2);
+       when(service.saveExamen(Datos.EXAMEN)).thenReturn(Datos.EXAMEN);
+       Examen examen = service.saveExamen(Datos.EXAMEN);
+        assertEquals("Quimica",examen.getNombre());
+        assertTrue(examen.getPreguntas().isEmpty());
+        verify(examenRepository).save(examen);
         }
     @Test
     void testExceptions(){
